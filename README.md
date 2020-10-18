@@ -91,11 +91,11 @@ sudo usermod -aG admin test3
 ~~Почему-то команда `sudo echo "AllowGroups admin" >> /etc/ssh/sshd_config` не сработала~~
 
 
-Из-за жтого придется выполнить команды:
+Из-за этого придется выполнить команду:
 ```
 sudo vim /etc/ssh/sshd_config
 ```
-Добавлена новая строка `AllowGroups admin` в конец открытого файла, сохранен документ и перезапущена служба SSH командой `sudo systemctl restart sshd`.
+Добавить новую строку `AllowGroups admin` в конец открытого файла, сохранить документ и перезапустить службу SSH командой `sudo systemctl restart sshd`.
 
 
 Удостоверимся, что всё работает корректно и выполним вход по ssh в пользователя *test1* и попытаемся войти от имени *test2*:
