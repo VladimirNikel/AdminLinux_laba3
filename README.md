@@ -146,6 +146,7 @@ sudo vim /etc/ssh/sshd_config
 </details>
 
 ## Используемый инструментарий:
+- Виртуальная машина под управлением **Ubuntu 18.04.5 LTS**
 - GIT (устанавливается командой `sudo apt install git -y`)
 - Docker (устанавливается командой `sudo apt install -y docker-ce`) [дополнительная инструкция](https://losst.ru/ustanovka-docker-na-ubuntu-16-04)
 - BASH (вроде идет в составе linux, но на всякий случай команда для установки `sudo apt install bash`)
