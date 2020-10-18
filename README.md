@@ -42,24 +42,34 @@ sudo useradd -d /home/test1 -s /bin/bash test1
 sudo useradd -d /home/test2 -s /bin/bash test2
 sudo useradd -d /home/test3 -s /bin/bash test3
 ```
+
 Результат выполнения команд (создание пользователей):
+
 ![Результат выполнения команд (создание пользователей)](https://sun9-63.userapi.com/FVJdk6u9kEf1M6tzw7bTk4jIjy2AaZjThsCuzw/wYPOeRXBLWc.jpg)
+
 
 Для добавления паролей выполним команду `sudo passwd <имя пользователя>` для каждого из пользователей.
 
-Всем пользователям был выставлен незамысловатый пароль: "Qwerty"
+Всем пользователям был выставлен незамысловатый пароль: "Qwerty".
+
 Результат выполнения команд (смены пароля для пользователей):
+
 ![Результат выполнения команд (смены пароля для пользователей)](https://sun9-8.userapi.com/eP-TZAVCCb4HdXljgfinmMSYGUZYcSVlDGcLnQ/BejFRx0ikRM.jpg)
+
 
 Далее была добавлена группа `admin` для этого была выполнена команда `sudo groupadd admin`.
 Результат добавления группы:
+
 ![Результат добавления группы](https://sun9-59.userapi.com/r6Ah5nZYm5ateNeNOg0oo8o6PoIbmoOUA7Rofg/HL15f3SYDrE.jpg)
+
 
 Далее были добавлены два пользователя *test1* и *test3* в группу `admin` следующими командами:
 ```
 sudo usermod -aG admin test1
 sudo usermod -aG admin test3
 ```
+
+
 Также, сразу после добавления удостоверимся в этом, введением команды `id <имя пользователя>`
 Результат добавления в группу нескольких пользователей:
 ![Результат добавления в группу нескольких пользователей](https://sun9-69.userapi.com/QdWYNILNj1I-CLfdCk4UAtaS-BteYJZABVnhqg/UZHu4u1kNL8.jpg)
