@@ -140,6 +140,7 @@ account    required     pam_time.so
 
 
 Установка docker'а производилась [по инструкции](https://losst.ru/ustanovka-docker-na-ubuntu-16-04)
+
 Выполнены команды:
 ```
 sudo apt update && sudo apt upgrade
