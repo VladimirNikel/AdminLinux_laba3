@@ -10,7 +10,8 @@
 >  * Включить нескольких из ранее созданных пользователей, а также пользователя root, в группу admin;
 >  * Запретить всем пользователям, кроме группы admin, логин в систему по SSH в выходные дни (суббота и воскресенье, без учета праздников).
 >  * \* С учётом праздничных дней.
-> (Для упрощения проверки можно разрешить парольную аутентификацию по SSH и использовать ssh user@localhost проверяя логин с этой же машины)
+>  
+>> (Для упрощения проверки можно разрешить парольную аутентификацию по SSH и использовать ssh user@localhost проверяя логин с этой же машины)
 > ---
 > 2. Вторая часть:
 >  * Установить docker;
@@ -174,7 +175,9 @@ sudo usermod -aG docker $(whoami)
 sudo curl -L "https://github.com/docker/compose/releases/download/1.25.0/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
 sudo chmod +x /usr/local/bin/docker-compose
 ```
+
 Установленная версия docker compose:
+
 ![Версия docker compose](https://sun9-30.userapi.com/8iDc9zzioZQ9rd14NVT08mZ9PI4-ieIp8VDs8g/THi0k0gGOfI.jpg "Версия docker compose")
 
 
