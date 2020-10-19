@@ -139,22 +139,61 @@ account    required     pam_time.so
 
 
 Установка docker'а производилась [по инструкции](https://losst.ru/ustanovka-docker-na-ubuntu-16-04)
+Выполнены команды:
+```
+sudo apt update && sudo apt upgrade
+sudo apt install apt-transport-https ca-certificates curl software-properties-common
+curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
+sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu bionic stable"
+sudo apt update && apt-cache policy docker-ce
+```
+
+Ну и команда для установки docker'a:
+```
+sudo apt install -y docker-ce
+```
+
+> Чтобы завершить установку осталось добавить нашего пользователя в группу docker. Иначе при запуске утилиты вы будете получать ошибку подключения к сокету.
+Выдача прав пользователю ***nikel*** производилась командой: 
+```
+sudo usermod -aG docker $(whoami)
+```
+Можно было обойтись командой `sudo usermod -aG docker nikel`, но я выполнил именно команду, приведенную выше.
+
+На данный момент пользователь уже может выполнять перезапуск docker'а командой `sudo systemctl restart docker`, пока что от имени суперпользователя.
 
 
 Собственно, подтверждение установки docker'а можно считать рисунок, приведенный ниже:
-
+![Версия установленного docker'a](https://sun9-33.userapi.com/z_3QI50H2qYQhhWfCYhO1n9GoBARC6cofTIzQQ/n5IKYib--Ks.jpg "Версия установленного docker'a")
 
 
 ### 2. Выдача прав на работу с docker'ом конкретному пользователю
 
+Чтобы пользовать мог пользоваться основными командами docker'a необходимо установить пакет **docker compose**, для этого необходимо выполнить следющие команды:
+```
+sudo curl -L "https://github.com/docker/compose/releases/download/1.25.0/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+sudo chmod +x /usr/local/bin/docker-compose
+```
+Установленная версия docker compose:
+![Версия docker compose](https://sun9-30.userapi.com/8iDc9zzioZQ9rd14NVT08mZ9PI4-ieIp8VDs8g/THi0k0gGOfI.jpg "Версия docker compose")
 
-Выдача прав пользователю *** __ *** производилась командой `sudo `
+
+После этого был выполнен перезапуск системы (хотя было бы достаточно просто перезайти в пользователя)...
 
 
-Попробуем выполнить частоиспользуемые команды работы с docker'ом, такие как:
+Попробуем выполнить часто используемые команды работы с docker'ом, такие как:
 - `docker ps -a`
 - `docker images`
 - `docker search`
+
+Но при попытках выполнить без прав суперпользователя получаем следующую ошибку:
+```
+nikel@VB:~$ docker ps -a
+Got permission denied while trying to connect to the Docker daemon socket at unix:///var/run/docker.sock: Get http://%2Fvar%2Frun%2Fdocker.sock/v1.40/containers/json?all=1: dial unix /var/run/docker.sock: connect: permission denied
+```
+
+
+
 
 Собственно, подтверждением _____ можно считать рисунок, приведенный ниже:
 
