@@ -178,25 +178,27 @@ sudo chmod +x /usr/local/bin/docker-compose
 ![Версия docker compose](https://sun9-30.userapi.com/8iDc9zzioZQ9rd14NVT08mZ9PI4-ieIp8VDs8g/THi0k0gGOfI.jpg "Версия docker compose")
 
 
-После этого был выполнен перезапуск системы (хотя было бы достаточно просто перезайти в пользователя)...
-
-
 Попробуем выполнить часто используемые команды работы с docker'ом, такие как:
 - `docker ps -a`
 - `docker images`
 - `docker search`
 
-Но при попытках выполнить без прав суперпользователя получаем следующую ошибку:
-```
-nikel@VB:~$ docker ps -a
-Got permission denied while trying to connect to the Docker daemon socket at unix:///var/run/docker.sock: Get http://%2Fvar%2Frun%2Fdocker.sock/v1.40/containers/json?all=1: dial unix /var/run/docker.sock: connect: permission denied
-```
+
+Собственно, подтверждением возможности использования основных команду можно считать рисунок, приведенный ниже:
+
+![Выполнение основных команд Docker'a](https://sun9-72.userapi.com/xvvCHxHb3YpljcxusXxeb-56oOtHFJfv-W4s-w/pMiwGdeYixk.jpg "Выполнение основных команд Docker'a")
 
 
+Для того, чтобы определенный пользователь мог пользоваться Docker'ом необходимо его дабавить в группу ***docker***, сейчас в группе находится 4 пользователя:
+
+![Список пользователей в группе docker](https://sun1-94.userapi.com/zG1olrL26HRcLFZkxF70Z6H00QlzQi1WmCsfSQ/nzW5GYCegQM.jpg "Список пользователей в группе docker")
+
+Потому что если попытаться выполнить любую команду от имени пользователя, которого нет в списке группы ***docker*** будет получено сообщение с ошибкой, приведенной ниже:
+
+![Ошибка при попытке использования docker'a пользователем, которого нет в группе docker](https://sun9-15.userapi.com/sTnEhL2y0CYMwJ3Br3rHpRysAv9_Ca9mIMCBqA/RlqbM21i_o8.jpg "Ошибка при попытке использования docker'a пользователем, которого нет в группе docker")
 
 
-Собственно, подтверждением _____ можно считать рисунок, приведенный ниже:
-
+На этом вторая часть завершена
 
 ---
 
