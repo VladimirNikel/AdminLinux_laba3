@@ -123,15 +123,36 @@ account    required     pam_time.so
 
 Необходимо первым делом установить pam_script в систему, так как он идет в составе пакета *libpam-script* то для установки используем команду `sudo apt install libpam-script`.
 
-Далее, выполним команду `sudo vim /etc/pam.d/pam_script_acct`, и напишем следующий код:
+Далее, выполним команду `sudo vim /usr/share/libpam-script/pam_script_acct`, и напишем следующий код:
 
-![Код, добавленный в /etc/pam.d/pam_script_acct](https://sun9-20.userapi.com/GBn20ENJ_h7uSPh_jk0VxOyMfjmMqTuXR4tD8g/nzFBf4iY7k8.jpg "Код, добавленный в /etc/pam.d/pam_script_acct")
+```bash
+#!bin/bash
+script="$1"
+shift
+
+if groups $PAM_USER | grep admin > /dev/null
+then
+        exit 0
+else
+        if [[ $(date +%u) -lt 6 ]]
+        then
+                exit 0
+        else
+                exit 1
+        fi
+fi
+
+if [ ! -e "$script" ]
+then
+        exit 0
+fi
+```
+
+Далее выполняем команду `sudo chmod +x /usr/share/libpam-script/pam_script_acct`, чтобы файл стал исполняемым.
 
 Далее, необходимо внести запись в файл `/etc/pam.d/sshd` как показано на рисунке ниже:
 
 ![Добавление строки в /etc/pam.d/sshd](https://sun9-39.userapi.com/MKpQqdWPcLQABoxgffahYyRNgMFfriG7uIGqww/sd3gRlR4Ml0.jpg "Добавление строки в /etc/pam.d/sshd")
-
-
 
 
 
